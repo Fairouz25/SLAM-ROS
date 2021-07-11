@@ -1,0 +1,22 @@
+To do Simultaneous Localization and Mapping using ROS you should follow these few steps:
+
+1- Type "source devel/setup.bash" then type "export TURTLEBOT3_MODEL=waffle_pi".
+  The model can be burger,waffle or waffle_pi. In my case it is waffle_pi.
+  
+2- Open an empty space that contains the turtlebot3 by typing this command
+  "roslaunch turtlebot3_gazebo turtlebot3_empty_world.launch" in the root of the workspace,
+  then insert a 'home' (or any other shape) inside this space to be like the image "house.png".
+  
+3- Open new terminal and type "source devel/setup.bash" then type "export TURTLEBOT3_MODEL=waffle_pi",
+  then type "roslaunch turtlebot3_slam turtlebot3_slam.launch slam_methods:=gmapping".
+
+4- To move the robot type in new terminal "source devel/setup.bash" then type "export TURTLEBOT3_MODEL=waffle_pi",
+  after that type "roslaunch turtlebot3_teleop turtlebot3_teleop_key.launch".
+  After moving the robot in all direction inside this space you should have image like "house_map.png".
+  
+5- After these steps you can extract and save the map by typing this command 
+  "rosrun map_server map_saver -f ~/map", and you will get a map like "map.pgm".
+
+*Note: If you have a problem with the "gmapping", you can type this command 
+      "git clone https://github.com/ros-perception/slam_gmapping.git" 
+      inside the 'src' folder that is inside the workspace.
